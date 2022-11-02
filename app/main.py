@@ -27,6 +27,13 @@ while True:
         print('error', error)
         time.sleep(2)
 
+################ verify user ####################
+@app.get('/users')
+def verify_user():
+    users = supabase.table('users').select('*').execute()
+    return users.data
+
+
 ################## quiz 1 #########################
 @app.get('/q1')
 def q1_get():
@@ -38,9 +45,9 @@ def q1_post(quiz: schemas.Quiz):
     quiz = quiz.dict()
     try:
         supabase.table('q1').insert(quiz).execute()
-        return {'score': quiz['score']}
+        return 1
     except:
-        return {'message': 'keeping original score'}
+        return 2
  
 ################## quiz 2 #########################
 @app.get('/q2')
@@ -53,9 +60,9 @@ def q2_post(quiz: schemas.Quiz):
     quiz = quiz.dict()
     try:
         supabase.table('q2').insert(quiz).execute()
-        return {'score': quiz['score']}
+        return 1
     except:
-        return {'message': 'keeping original score'}
+        return 2
 
 ################## quiz 3 #########################
 @app.get('/q3')
@@ -68,9 +75,9 @@ def q3_post(quiz: schemas.Quiz):
     quiz = quiz.dict()
     try:
         supabase.table('q3').insert(quiz).execute()
-        return {'score': quiz['score']}
+        return 1
     except:
-        return {'message': 'keeping original score'}
+        return 2
 
 
 ################## quiz 4 #########################
@@ -84,9 +91,9 @@ def q4_post(quiz: schemas.Quiz):
     quiz = quiz.dict()
     try:
         supabase.table('q4').insert(quiz).execute()
-        return {'score': quiz['score']}
+        return 1
     except:
-        return {'message': 'keeping original score'}
+        return 2
 
 
 ################## user average #########################

@@ -24,6 +24,7 @@ def get_scores(supabase):
         new_score = sum(scores)/len(scores)
         response[person] = new_score
 
+    
     return response
   
 def add_to_scores(scores_dict, scores):
